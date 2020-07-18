@@ -13,16 +13,31 @@
 
         <action
             android:id="@+id/action_MainMenu_to_Settings"
-            app:destination="@id/SecondFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="smet2133.arithmetic_basic.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+            app:destination="@id/SettingsFragment" />
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            android:id="@+id/action_MainMenu_to_Test"
+            app:destination="@id/TestFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/TestFragment"
+        android:name="smet2133.arithmetic_basic.TestFragment"
+        tools:layout="@layout/fragment_test">
+
+        <action
+            android:id="@+id/action_Test_to_MainMenu"
+            app:destination="@id/MainMenuFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/SettingsFragment"
+        android:name="smet2133.arithmetic_basic.SettingsFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_settings">
+
+        <action
+            android:id="@+id/action_Settings_to_MainMenu"
             app:destination="@id/MainMenuFragment" />
     </fragment>
 </navigation>
