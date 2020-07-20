@@ -53,7 +53,7 @@
         app:layout_constraintStart_toEndOf="@+id/textView_second_argument" />
 
     <Button
-        android:id="@+id/button_test_end"
+        android:id="@+id/button_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Закончить"

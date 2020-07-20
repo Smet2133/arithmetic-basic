@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_MainMenu_to_Test"
             app:destination="@id/TestFragment" />
+        <action
+            android:id="@+id/action_MainMenuFragment_to_reportsFragment"
+            app:destination="@id/reportsFragment" />
     </fragment>
 
     <fragment
@@ -40,4 +43,15 @@
             android:id="@+id/action_Settings_to_MainMenu"
             app:destination="@id/MainMenuFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/reportsFragment"
+        android:name="smet2133.arithmetic_basic.ReportsFragment"
+        android:label="ReportsFragment" >
+
+    <action
+        android:id="@+id/action_Reports_to_MainMenu"
+        app:destination="@id/MainMenuFragment" />
+    </fragment>
+
 </navigation>

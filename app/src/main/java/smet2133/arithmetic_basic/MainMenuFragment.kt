@@ -31,5 +31,9 @@ class MainMenuFragment : Fragment() {
         view.findViewById<Button>(R.id.button_start).setOnClickListener {
             findNavController().navigate(R.id.action_MainMenu_to_Test)
         }
+
+        view.findViewById<Button>(R.id.button_reports).setOnClickListener {
+            findNavController().navigate(R.id.action_MainMenuFragment_to_reportsFragment)
+        }
     }
 }

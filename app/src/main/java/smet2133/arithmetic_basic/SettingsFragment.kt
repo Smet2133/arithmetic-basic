@@ -24,8 +24,8 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.button_test_end).setOnClickListener {
+/*        view.findViewById<Button>(R.id.button_back).setOnClickListener {
             findNavController().navigate(R.id.action_Settings_to_MainMenu)
-        }
+        }*/
     }
 }

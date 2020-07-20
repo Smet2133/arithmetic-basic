@@ -7,7 +7,7 @@
     tools:context=".MainMenuFragment">
 
     <Button
-        android:id="@+id/button_report"
+        android:id="@+id/button_reports"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
@@ -45,7 +45,7 @@
         android:layout_height="40dp"
         android:layout_marginBottom="40dp"
         android:text="Начать"
-        app:layout_constraintBottom_toTopOf="@+id/button_report"
+        app:layout_constraintBottom_toTopOf="@+id/button_reports"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

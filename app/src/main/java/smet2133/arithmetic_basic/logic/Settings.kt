@@ -1,6 +1,8 @@
 package smet2133.arithmetic_basic.logic
 
-class Settings {
+import java.io.Serializable
+
+class Settings : Serializable {
 
     var isSumChecked: Boolean = true
     var sumFrom: Int = 0

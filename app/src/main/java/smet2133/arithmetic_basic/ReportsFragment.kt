@@ -1,29 +1,26 @@
 package smet2133.arithmetic_basic
 
-import android.graphics.Color
 import android.os.Bundle
-import android.os.SystemClock
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Chronometer
-import android.widget.EditText
 import android.widget.TextView
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_test.*
 import smet2133.arithmetic_basic.logic.Test
+import smet2133.arithmetic_basic.persistance.Util
+import java.io.FileInputStream
+import java.io.ObjectInputStream
+import androidx.navigation.fragment.findNavController
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class TestFragment : Fragment() {
+class ReportsFragment : Fragment() {
 
-    val test = Test()
     lateinit var myView: View
-
-
-
 
 
     override fun onCreateView(
@@ -31,12 +28,31 @@ class TestFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_test, container, false)
+        return inflater.inflate(R.layout.fragment_reports, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         myView = view
+
+        val textView: TextView = view.findViewById(R.id.textView_try) as TextView
+       // var textView =  view.findViewById<TextView>(R.id.textView_try)
+        textView.text = ""
+        var tests = Util.loadReports()
+        if (tests != null) {
+            for (test in tests) {
+                textView.text = textView.text as String + test.toString() + "\n"
+            }
+        } else {
+            println("tests is null in Reports")
+        }
+
+
+        view.findViewById<Button>(R.id.button_back).setOnClickListener {
+            findNavController().navigate(R.id.action_Reports_to_MainMenu)
+        }
+
+/*
 
         var chronometer = view.findViewById<Chronometer>(R.id.chronometer)
 
@@ -46,7 +62,7 @@ class TestFragment : Fragment() {
             println(chronometer.base)
             println(SystemClock.elapsedRealtime() - chronometer.base)
             test.duration = SystemClock.elapsedRealtime() - chronometer.base
-            test.saveTestToFile()
+            test.save()
             findNavController().navigate(R.id.action_Test_to_MainMenu)
         }
 
@@ -71,21 +87,11 @@ class TestFragment : Fragment() {
         genNewTask()
 
 
+*/
 
     }
 
-    private fun genNewTask() {
 
-        test.nextTask()
-
-        var numbSlashCorrect = (test.taskNum).toString() + "/" + test.taskCorrect.toString()
-        myView.findViewById<TextView>(R.id.textView_numSlashCorr).text = numbSlashCorrect
-
-
-        myView.findViewById<TextView>(R.id.textView_first_argument).text = test.firstArg.toString()
-        myView.findViewById<TextView>(R.id.textView_second_argument).text = test.secondArg.toString()
-        myView.findViewById<TextView>(R.id.plainText_answer).text = ""
-    }
 
 
 }
