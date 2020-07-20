@@ -51,11 +51,18 @@ class TestFragment : Fragment() {
         }
 
         view.findViewById<Button>(R.id.button_test_next).setOnClickListener {
-            var answ = view.findViewById<EditText>(R.id.plainText_answer).text
+
+            var field1 = if (view.findViewById<EditText>(R.id.plainText_answer1).text.toString().equals("")) 0 else view.findViewById<EditText>(R.id.plainText_answer1).text.toString().toInt()
+            var field0 = if (view.findViewById<EditText>(R.id.plainText_answer0).text.toString().equals("")) 0 else view.findViewById<EditText>(R.id.plainText_answer0).text.toString().toInt()
+
+            var answ: Int = field1 * 10 + field0
             println("########answ: $answ")
             if (!test.checkResult(answ.toString())) {
                 view.findViewById<TextView>(R.id.textView_correctOrNot).setTextColor(Color.parseColor("red"))
                 view.findViewById<TextView>(R.id.textView_correctOrNot).text = "Неверный ответ, попробуй ещё"
+            } else if (((test.firstArg % 10 + test.secondArg % 10) >= 10) && view.findViewById<TextView>(R.id.plainText_addition).text.toString() != "1") {
+                view.findViewById<TextView>(R.id.textView_correctOrNot).setTextColor(Color.parseColor("black"))
+                view.findViewById<TextView>(R.id.textView_correctOrNot).text = "Ответ верный, но как ты посчитал без единички для десятков?"
             } else {
                 view.findViewById<TextView>(R.id.textView_correctOrNot).setTextColor(Color.parseColor("green"))
                 view.findViewById<TextView>(R.id.textView_correctOrNot).text = "Молодец, продолжай решать"
@@ -84,7 +91,9 @@ class TestFragment : Fragment() {
 
         myView.findViewById<TextView>(R.id.textView_first_argument).text = test.firstArg.toString()
         myView.findViewById<TextView>(R.id.textView_second_argument).text = test.secondArg.toString()
-        myView.findViewById<TextView>(R.id.plainText_answer).text = ""
+        myView.findViewById<TextView>(R.id.plainText_answer1).text = ""
+        myView.findViewById<TextView>(R.id.plainText_answer0).text = ""
+        myView.findViewById<TextView>(R.id.plainText_addition).text = ""
     }
 
 
